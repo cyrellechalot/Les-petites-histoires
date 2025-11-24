@@ -1,14 +1,74 @@
-Tu vas m'assister pour créer un site pour que les enfants puissent lire des histoires 
+const stories = {
+    chaperon: {
+        title: "Le Petit Chaperon Rouge",
+        text: "Version courte libre de droits : ... (je peux ajouter plus long si tu veux)"
+    },
+    belle: {
+        title: "La Belle et la Bête",
+        text: "Version courte libre de droits : ..."
+    },
+    galette: {
+        title: "Roule Galette",
+        text: "Résumé libre : ..."
+    },
+    elmer: {
+        title: "Elmer",
+        text: "Résumé libre : ..."
+    }
+};
 
-Intégre ça dans le site :
-Des boutons interactifs pour les emmener sur certaines pages 
-(Ex : j’appuie sur ça et ça m’emmène sur une telle histoire)
-Les histoires sont: 
-- le petit chaperon rouge 
-- la belle et la bête 
-- roule galette 
-- Elmer  
+let likes = 0;
 
-Je veux que ça ressemble à : un site accessible pour les enfants, quelque chose de coloré et avec des petits dessins simple si possible genre bonhomme bâtons
+// MODÉRATION automatiques mots interdits
+const badWords = ["con", "merde", "put*", "salo*", "fdp"];
 
-**Requis** : - tu es un assistant de code tu écris 3 codes livrés en texte brut directement dans le chat (index.html, styles.css, script.js) AUCUN Typescript, nextJS ou autres langages. - fais moi un résumé 300 mot max de ce que font chacun des fichiers  - pose moi des questions si nécessaire pour ajuster des éventuels points qui manquent de détails. - tu peux mettre des place holder pour les images mais explique moi comment les intégrer via url ou le dépôt github si c'est le cas.
+function cleanText(text) {
+    let cleaned = text;
+    badWords.forEach(bad => {
+        const regex = new RegExp(bad.replace("*", ".*"), "gi");
+        cleaned = cleaned.replace(regex, "★");
+    });
+    return cleaned;
+}
+
+function goToStory(key) {
+    document.getElementById("story-title").textContent = stories[key].title;
+    document.getElementById("story-text").textContent = stories[key].text;
+
+    document.getElementById("like-section").classList.remove("hidden");
+    document.getElementById("comment-section").classList.remove("hidden");
+    document.getElementById("suite-section").classList.remove("hidden");
+}
+
+function addLike() {
+    likes++;
+    document.getElementById("like-count").textContent = likes;
+}
+
+function addComment() {
+    const input = document.getElementById("comment-input").value;
+    if (input.trim() === "") return;
+
+    const safeText = cleanText(input);
+
+    const bubble = document.createElement("div");
+    bubble.className = "bubble";
+    bubble.textContent = safeText;
+
+    document.getElementById("comments-list").appendChild(bubble);
+    document.getElementById("comment-input").value = "";
+}
+
+function addSuite() {
+    const input = document.getElementById("suite-input").value;
+    if (input.trim() === "") return;
+
+    const safeText = cleanText(input);
+
+    const bubble = document.createElement("div");
+    bubble.className = "bubble";
+    bubble.textContent = safeText;
+
+    document.getElementById("suite-list").appendChild(bubble);
+    document.getElementById("suite-input").value = "";
+}
