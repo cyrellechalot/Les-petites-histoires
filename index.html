@@ -1,85 +1,29 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Histoires pour Enfants</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histoires pour enfants</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <div class="logo">📚</div>
-    <h1>Histoires pour Enfants</h1>
-  </header>
+    <header>
+        <h1>Bienvenue dans le monde des histoires !</h1>
+    </header>
 
-  <main id="app">
-    <!-- page d'accueil -->
-    <section id="home" class="view">
-      <p class="subtitle">Choisis une histoire en appuyant sur un bouton !</p>
-      <div class="grid">
-        <a class="card" href="#chaperon" data-story="chaperon">
-          <img src="/mnt/data/A_colorful,_child-friendly_web_page_design_titled_.png" alt="Chaperon">
-          <div class="card-title">Le Petit Chaperon Rouge</div>
-        </a>
-
-        <a class="card" href="#belle" data-story="belle">
-          <img src="/mnt/data/A_colorful,_child-friendly_web_page_design_titled_.png" alt="Belle">
-          <div class="card-title">La Belle et la Bête</div>
-        </a>
-
-        <a class="card" href="#galette" data-story="galette">
-          <img src="/mnt/data/A_colorful,_child-friendly_web_page_design_titled_.png" alt="Galette">
-          <div class="card-title">Roule Galette</div>
-        </a>
-
-        <a class="card" href="#elmer" data-story="elmer">
-          <img src="/mnt/data/A_colorful,_child-friendly_web_page_design_titled_.png" alt="Elmer">
-          <div class="card-title">Elmer</div>
-        </a>
-      </div>
-    </section>
-
-    <!-- view qui servira pour chaque histoire (routing par hash) -->
-    <section id="story-view" class="view hidden">
-      <button class="back" onclick="location.href='#'">← Retour</button>
-      <h2 id="story-title"></h2>
-      <div id="story-image-wrap"><img id="story-image" src="" alt=""></div>
-      <article id="story-text" class="story-text"></article>
-
-      <div id="like-area" class="panel">
-        <button id="like-btn" class="like-btn">👍 J’aime</button>
-        <span id="like-count">0</span>
-      </div>
-
-      <div class="panel">
-        <h3>💬 Commentaires</h3>
-        <textarea id="comment-input" placeholder="Écris ton commentaire..."></textarea>
-        <div class="row">
-          <button id="comment-send">Envoyer</button>
-          <small id="comment-help">Max 400 caractères — modération automatique ON</small>
+    <main>
+        <div class="story-buttons">
+            <a href="histoire.html?histoire=chaperon" class="story-btn" style="background-color: #FFB6C1;">Le Petit Chaperon Rouge</a>
+            <a href="histoire.html?histoire=cochons" class="story-btn" style="background-color: #FFD700;">Les Trois Petits Cochons</a>
+            <a href="histoire.html?histoire=roule" class="story-btn" style="background-color: #90EE90;">Roule Galette</a>
+            <a href="histoire.html?histoire=canard" class="story-btn" style="background-color: #87CEFA;">Le Vilain Petit Canard</a>
         </div>
-        <div id="comments-list" class="list"></div>
-      </div>
-
-      <div class="panel">
-        <h3>✨ Invente une suite</h3>
-        <textarea id="suite-input" placeholder="Imagine la suite..."></textarea>
-        <div class="row">
-          <button id="suite-send">Publier</button>
-          <small>Les suites sont visibles par tous (Firebase)</small>
-        </div>
-        <div id="suites-list" class="list"></div>
-      </div>
-    </section>
+    </main>
 
     <footer>
-      <small>Site pour enfants — modération automatique activée.</small>
+        <p>© 2025 Histoires pour enfants</p>
     </footer>
-  </main>
 
-  <!-- Firebase (v9 modular) + notre script principal -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
