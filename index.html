@@ -1,67 +1,85 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Histoires pour Enfants</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Histoires pour Enfants</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <header>
+    <div class="logo">📚</div>
+    <h1>Histoires pour Enfants</h1>
+  </header>
 
-<header>
-    <h1>📚 Histoires Pour Enfants</h1>
-</header>
+  <main id="app">
+    <!-- page d'accueil -->
+    <section id="home" class="view">
+      <p class="subtitle">Choisis une histoire en appuyant sur un bouton !</p>
+      <div class="grid">
+        <a class="card" href="#chaperon" data-story="chaperon">
+          <img src="/mnt/data/A_colorful,_child-friendly_web_page_design_titled_.png" alt="Chaperon">
+          <div class="card-title">Le Petit Chaperon Rouge</div>
+        </a>
 
-<main>
+        <a class="card" href="#belle" data-story="belle">
+          <img src="/mnt/data/A_colorful,_child-friendly_web_page_design_titled_.png" alt="Belle">
+          <div class="card-title">La Belle et la Bête</div>
+        </a>
 
-    <div class="story-buttons">
-        <button onclick="goToStory('chaperon')">
-            <img src="images/chaperon.png" alt="Petit dessin">
-            Le Petit Chaperon Rouge
-        </button>
+        <a class="card" href="#galette" data-story="galette">
+          <img src="/mnt/data/A_colorful,_child-friendly_web_page_design_titled_.png" alt="Galette">
+          <div class="card-title">Roule Galette</div>
+        </a>
 
-        <button onclick="goToStory('belle')">
-            <img src="images/belle.png" alt="Petit dessin">
-            La Belle et la Bête
-        </button>
-
-        <button onclick="goToStory('galette')">
-            <img src="images/galette.png" alt="Petit dessin">
-            Roule Galette
-        </button>
-
-        <button onclick="goToStory('elmer')">
-            <img src="images/elmer.png" alt="Petit dessin">
-            Elmer
-        </button>
-    </div>
-
-    <section id="story-container">
-        <h2 id="story-title"></h2>
-        <p id="story-text"></p>
-
-        <div id="like-section" class="hidden">
-            <button id="like-btn" onclick="addLike()">👍 J’aime</button>
-            <span id="like-count">0</span>
-        </div>
-
-        <h3 class="section-title">💬 Laisse un commentaire</h3>
-        <div id="comment-section" class="hidden">
-            <textarea id="comment-input" placeholder="Écris ton commentaire..."></textarea>
-            <button onclick="addComment()">Envoyer</button>
-            <div id="comments-list"></div>
-        </div>
-
-        <h3 class="section-title">✨ Invente une suite à l’histoire</h3>
-        <div id="suite-section" class="hidden">
-            <textarea id="suite-input" placeholder="Imagine la suite..."></textarea>
-            <button onclick="addSuite()">Publier</button>
-            <div id="suite-list"></div>
-        </div>
+        <a class="card" href="#elmer" data-story="elmer">
+          <img src="/mnt/data/A_colorful,_child-friendly_web_page_design_titled_.png" alt="Elmer">
+          <div class="card-title">Elmer</div>
+        </a>
+      </div>
     </section>
 
-</main>
+    <!-- view qui servira pour chaque histoire (routing par hash) -->
+    <section id="story-view" class="view hidden">
+      <button class="back" onclick="location.href='#'">← Retour</button>
+      <h2 id="story-title"></h2>
+      <div id="story-image-wrap"><img id="story-image" src="" alt=""></div>
+      <article id="story-text" class="story-text"></article>
 
-<script src="script.js"></script>
+      <div id="like-area" class="panel">
+        <button id="like-btn" class="like-btn">👍 J’aime</button>
+        <span id="like-count">0</span>
+      </div>
+
+      <div class="panel">
+        <h3>💬 Commentaires</h3>
+        <textarea id="comment-input" placeholder="Écris ton commentaire..."></textarea>
+        <div class="row">
+          <button id="comment-send">Envoyer</button>
+          <small id="comment-help">Max 400 caractères — modération automatique ON</small>
+        </div>
+        <div id="comments-list" class="list"></div>
+      </div>
+
+      <div class="panel">
+        <h3>✨ Invente une suite</h3>
+        <textarea id="suite-input" placeholder="Imagine la suite..."></textarea>
+        <div class="row">
+          <button id="suite-send">Publier</button>
+          <small>Les suites sont visibles par tous (Firebase)</small>
+        </div>
+        <div id="suites-list" class="list"></div>
+      </div>
+    </section>
+
+    <footer>
+      <small>Site pour enfants — modération automatique activée.</small>
+    </footer>
+  </main>
+
+  <!-- Firebase (v9 modular) + notre script principal -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
