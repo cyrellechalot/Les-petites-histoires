@@ -1,205 +1,122 @@
-/* ========= CONFIG ==========
-  Pour activer Firebase, remplace l'objet firebaseConfig ci-dessous
-  par ta vraie config (les clés) provenant de la console Firebase.
-  Si tu laisses les champs vides, le site utilisera localStorage en
-  fallback (donc rien de partagé entre visiteurs).
-*/
-const firebaseConfig = {
-  apiKey: "",           // <-- remplace ici
-  authDomain: "",
-  databaseURL: "",      // important pour Realtime Database
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: ""
-};
+// Likes et vues pour les histoires
+function updateLikeView(histoireId) {
+    let likes = localStorage.getItem(histoireId + "_likes") || 0;
+    let vues = localStorage.getItem(histoireId + "_vues") || 0;
 
-/* ====== Données des histoires (remplace par le texte complet si tu veux) ====== */
-const STORIES = {
-  chaperon: {
-    id: "chaperon",
-    title: "Le Petit Chaperon Rouge",
-    // texte court d'exemple — tu peux remplacer par le texte complet
-    text: "C'était une fois une petite fille que tout le monde aimait...",
-    img: "/mnt/data/A_colorful,_child-friendly_web_page_design_titled_.png"
-  },
-  belle: {
-    id: "belle",
-    title: "La Belle et la Bête",
-    text: "Il était une fois une jeune fille pleine de bonté...",
-    img: "/mnt/data/A_colorful,_child-friendly_web_page_design_titled_.png"
-  },
-  galette: {
-    id: "galette",
-    title: "Roule Galette",
-    text: "Une galette qui roule, qui roule...",
-    img: "/mnt/data/A_colorful,_child-friendly_web_page_design_titled_.png"
-  },
-  elmer: {
-    id: "elmer",
-    title: "Elmer",
-    text: "Elmer était un éléphant aux couleurs vives...",
-    img: "/mnt/data/A_colorful,_child-friendly_web_page_design_titled_.png"
-  }
-};
+    vues++; // on incrémente les vues dès qu'on ouvre l'histoire
 
-/* ====== Modération simple ====== */
-const BAD_WORDS = ["con", "merde", "putain", "salope", "fdp", "encul"]; // /!\ simple list
-function moderate(text){
-  if(!text) return "";
-  let out = text;
-  BAD_WORDS.forEach(b=>{
-    const r = new RegExp(b.replace(/\*/g,".*"),"gi");
-    out = out.replace(r, "★");
-  });
-  if(out.length>400) out = out.slice(0,400) + "…";
-  return out;
+    localStorage.setItem(histoireId + "_likes", likes);
+    localStorage.setItem(histoireId + "_vues", vues);
+
+    return { likes, vues };
 }
 
-/* ====== Storage (Firebase Realtime DB if configured, else localStorage) ====== */
-let useFirebase=false;
-let database = null;
-function initFirebaseIfConfigured(){
-  const ok = firebaseConfig && firebaseConfig.apiKey;
-  if(!ok) return console.log("Firebase config absent — fallback localStorage");
-  try{
-    firebase.initializeApp(firebaseConfig);
-    database = firebase.database();
-    useFirebase = true;
-    console.log("Firebase initialisé (Realtime DB) — données partagées en ligne");
-  } catch(e){
-    console.warn("Impossible d'initialiser Firebase, fallback localStorage", e);
-    useFirebase=false;
-  }
+// Fonction pour charger une histoire via URL param
+function loadHistoire() {
+    const params = new URLSearchParams(window.location.search);
+    const histoire = params.get('histoire');
+
+    const titreMap = {
+        chaperon: "Le Petit Chaperon Rouge",
+        cochons: "Les Trois Petits Cochons",
+        roule: "Roule Galette",
+        canard: "Le Vilain Petit Canard"
+    };
+
+    const couleurMap = {
+        chaperon: "#FFB6C1",
+        cochons: "#FFD700",
+        roule: "#90EE90",
+        canard: "#87CEFA"
+    };
+
+    const imageMap = {
+        chaperon: "https://via.placeholder.com/600x300?text=Chaperon+Rouge",
+        cochons: "https://via.placeholder.com/600x300?text=Trois+Cochons",
+        roule: "https://via.placeholder.com/600x300?text=Roule+Galette",
+        canard: "https://via.placeholder.com/600x300?text=Vilain+Petit+Canard"
+    };
+
+    const texteMap = {
+        chaperon: "Il était une fois une petite fille appelée le Petit Chaperon Rouge. Sa mère lui demanda d'apporter un panier de nourriture à sa grand-mère malade. En chemin, elle rencontra le loup qui prit un raccourci et trompa la grand-mère. Heureusement, un chasseur arriva à temps pour sauver tout le monde.",
+        cochons: "Trois petits cochons construisaient chacun leur maison : l'un en paille, l'autre en bois, et le dernier en briques. Le grand méchant loup souffla et détruisit les deux premières maisons, mais la maison en briques résista et les cochons furent sauvés.",
+        roule: "La galette était prête et voulait se promener. Elle rencontra différents animaux sur son chemin. Chaque animal voulait la manger, mais la galette roulait vite et échappait à tous. Finalement, elle fut avalée par un renard rusé, mais cela se termina bien grâce à la ruse des personnages.",
+        canard: "Un petit canard naquit différent des autres et fut rejeté par tous. Il grandit et devint un magnifique cygne. Tout le monde fut surpris de voir combien il était beau et unique."
+    };
+
+    document.body.style.backgroundColor = couleurMap[histoire] || "#FFF8DC";
+
+    const container = document.createElement('div');
+    container.className = 'histoire-container';
+
+    container.innerHTML = `
+        <h2>${titreMap[histoire] || "Histoire"}</h2>
+        <img src="${imageMap[histoire]}" alt="${titreMap[histoire]}">
+        <p>${texteMap[histoire]}</p>
+        <button class="like-btn">❤️ J'aime (<span id="like-count">0</span>)</button>
+        <p>👁 Vues: <span id="view-count">0</span></p>
+
+        <div class="forum-section">
+            <h3>Inventer une suite :</h3>
+            <textarea id="new-post" rows="3" cols="50" placeholder="Écris ta suite ici..."></textarea>
+            <button id="submit-post">Publier</button>
+            <div id="posts-container"></div>
+        </div>
+    `;
+
+    document.body.appendChild(container);
+
+    // Likes et vues
+    let counts = updateLikeView(histoire);
+    document.getElementById('like-count').innerText = localStorage.getItem(histoire + "_likes");
+    document.getElementById('view-count').innerText = localStorage.getItem(histoire + "_vues");
+
+    document.querySelector('.like-btn').addEventListener('click', () => {
+        let likes = parseInt(localStorage.getItem(histoire + "_likes") || 0);
+        likes++;
+        localStorage.setItem(histoire + "_likes", likes);
+        document.getElementById('like-count').innerText = likes;
+    });
+
+    // Forum
+    const postsContainer = document.getElementById('posts-container');
+
+    function renderPosts() {
+        postsContainer.innerHTML = '';
+        let posts = JSON.parse(localStorage.getItem(histoire + "_posts") || "[]");
+        posts.forEach((post, index) => {
+            const postDiv = document.createElement('div');
+            postDiv.className = 'forum-post';
+            postDiv.innerHTML = `
+                <p>${post.text}</p>
+                <button onclick="likePost(${index}, '${histoire}')">❤️ ${post.likes}</button>
+                👁 ${post.views}
+            `;
+            postsContainer.appendChild(postDiv);
+        });
+    }
+
+    window.likePost = function(index, histoire) {
+        let posts = JSON.parse(localStorage.getItem(histoire + "_posts") || "[]");
+        posts[index].likes++;
+        localStorage.setItem(histoire + "_posts", JSON.stringify(posts));
+        renderPosts();
+    };
+
+    document.getElementById('submit-post').addEventListener('click', () => {
+        const text = document.getElementById('new-post').value.trim();
+        if(text === '') return;
+
+        let posts = JSON.parse(localStorage.getItem(histoire + "_posts") || "[]");
+        posts.push({ text, likes: 0, views: 0 });
+        localStorage.setItem(histoire + "_posts", JSON.stringify(posts));
+        document.getElementById('new-post').value = '';
+        renderPosts();
+    });
+
+    renderPosts();
 }
-initFirebaseIfConfigured();
 
-/* helpers pour clés locales */
-function localKey(k){ return `histoires_app__${k}`; }
-
-/* ====== CRUD ====== */
-async function getData(kind, storyId){
-  if(useFirebase){
-    const snapshot = await database.ref(`${storyId}/${kind}`).once('value');
-    return snapshot.val() || null;
-  } else {
-    const raw = localStorage.getItem(localKey(`${storyId}__${kind}`));
-    return raw ? JSON.parse(raw) : null;
-  }
+if(window.location.href.includes('histoire.html')){
+    loadHistoire();
 }
-async function setData(kind, storyId, value){
-  if(useFirebase){
-    await database.ref(`${storyId}/${kind}`).set(value);
-  } else {
-    localStorage.setItem(localKey(`${storyId}__${kind}`), JSON.stringify(value));
-  }
-}
-
-/* ====== UI & routing ====== */
-const homeEl = document.getElementById('home');
-const storyView = document.getElementById('story-view');
-const titleEl = document.getElementById('story-title');
-const textEl = document.getElementById('story-text');
-const imgEl = document.getElementById('story-image');
-
-const likeBtn = document.getElementById('like-btn');
-const likeCount = document.getElementById('like-count');
-
-const commentInput = document.getElementById('comment-input');
-const commentSend = document.getElementById('comment-send');
-const commentsList = document.getElementById('comments-list');
-
-const suiteInput = document.getElementById('suite-input');
-const suiteSend = document.getElementById('suite-send');
-const suitesList = document.getElementById('suites-list');
-
-let currentStory = null;
-
-function showHome(){ homeEl.classList.remove('hidden'); storyView.classList.add('hidden'); }
-async function showStory(id){
-  const s = STORIES[id];
-  if(!s) return showHome();
-  currentStory = s;
-  homeEl.classList.add('hidden');
-  storyView.classList.remove('hidden');
-
-  titleEl.textContent = s.title;
-  textEl.textContent = s.text;
-  imgEl.src = s.img;
-  imgEl.alt = s.title;
-
-  // charger likes / commentaires / suites
-  const likes = (await getData('likes', id)) || 0;
-  likeCount.textContent = likes;
-
-  const comments = (await getData('comments', id)) || [];
-  renderComments(comments);
-
-  const suites = (await getData('suites', id)) || [];
-  renderSuites(suites);
-}
-
-/* ====== render helpers ====== */
-function renderComments(comments){
-  commentsList.innerHTML = "";
-  (comments||[]).slice().reverse().forEach(c=>{
-    const d = document.createElement('div'); d.className='bubble';
-    d.textContent = c;
-    commentsList.appendChild(d);
-  });
-}
-function renderSuites(suites){
-  suitesList.innerHTML = "";
-  (suites||[]).slice().reverse().forEach(s=>{
-    const d = document.createElement('div'); d.className='bubble';
-    d.textContent = s;
-    suitesList.appendChild(d);
-  });
-}
-
-/* ====== actions ====== */
-likeBtn.addEventListener('click', async ()=>{
-  if(!currentStory) return;
-  const id = currentStory.id;
-  let count = (await getData('likes', id)) || 0;
-  count = Number(count) + 1;
-  await setData('likes', id, count);
-  likeCount.textContent = count;
-  // petit effet
-  likeBtn.animate([{transform:'scale(1)'},{transform:'scale(1.12)'},{transform:'scale(1)'}],{duration:220});
-});
-
-commentSend.addEventListener('click', async ()=>{
-  if(!currentStory) return;
-  const raw = commentInput.value.trim();
-  if(!raw) return;
-  const safe = moderate(raw);
-  const id = currentStory.id;
-  let comments = (await getData('comments', id)) || [];
-  comments.push(safe);
-  await setData('comments', id, comments);
-  commentInput.value = '';
-  renderComments(comments);
-});
-
-suiteSend.addEventListener('click', async ()=>{
-  if(!currentStory) return;
-  const raw = suiteInput.value.trim();
-  if(!raw) return;
-  const safe = moderate(raw);
-  const id = currentStory.id;
-  let suites = (await getData('suites', id)) || [];
-  suites.push(safe);
-  await setData('suites', id, suites);
-  suiteInput.value = '';
-  renderSuites(suites);
-});
-
-/* ====== router (hash) ====== */
-function router(){
-  const hash = location.hash.replace(/^#/,'') || '';
-  if(!hash) return showHome();
-  showStory(hash);
-}
-window.addEventListener('hashchange', router);
-window.addEventListener('load', router);
