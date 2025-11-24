@@ -1,74 +1,88 @@
-:root{
-  --bg:#FFF3E6;
-  --card:#FFF;
-  --accent:#FF8A65;
-  --accent-2:#FFD54F;
-  --muted:#6b6b6b;
-  --shadow: 0 6px 18px rgba(0,0,0,0.08);
+/* Police enfantine */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
+body {
+    font-family: 'Comic Neue', cursive;
+    margin: 0;
+    padding: 0;
+    background-color: #FFF8DC;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;
-  background:var(--bg);
-  color:#222;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #FFA07A;
+    color: white;
 }
 
-header{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:18px 20px;
-  background:linear-gradient(90deg,var(--accent),#FF7043);
-  color:white;
-}
-header .logo{font-size:28px}
-header h1{margin:0;font-size:20px}
-
-main{max-width:980px;margin:20px auto;padding:0 16px}
-
-.subtitle{font-size:18px;margin:12px 0;color:var(--muted)}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:18px;
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-.card{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  text-decoration:none;
-  background:var(--card);
-  border-radius:18px;
-  padding:18px;
-  box-shadow:var(--shadow);
-  transition:transform .18s ease, box-shadow .18s ease;
-  border:6px solid rgba(255,255,255,0.6);
+.story-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
-.card:hover{transform:translateY(-6px)}
-.card img{width:160px;height:160px;object-fit:contain;border-radius:12px}
-.card-title{margin-top:10px;color:#333;font-weight:700}
 
-.hidden{display:none}
-.back{background:none;border:0;color:var(--accent);font-weight:700;margin-bottom:6px;cursor:pointer}
-
-.story-text{background:#fff;padding:16px;border-radius:12px;box-shadow:var(--shadow);margin:12px 0;min-height:120px}
-
-.panel{margin:12px 0;background:linear-gradient(180deg,#fff,#fff);padding:12px;border-radius:12px;box-shadow:var(--shadow)}
-.like-btn{padding:10px 14px;background:var(--accent);border:0;border-radius:10px;color:#fff;font-weight:700;cursor:pointer}
-#like-count{margin-left:10px;font-weight:700}
-
-textarea{width:100%;min-height:70px;padding:10px;border-radius:10px;border:2px dashed #f0a081;font-size:15px}
-.row{display:flex;gap:10px;align-items:center;margin-top:8px}
-button{cursor:pointer;border:0;padding:10px 14px;border-radius:10px;background:var(--accent-2);font-weight:700}
-.list{margin-top:10px;display:flex;flex-direction:column;gap:8px}
-.bubble{
-  background:linear-gradient(90deg,#fff,#fff7);
-  padding:10px;border-radius:12px;border:2px solid #ffd6a6;
+.story-btn {
+    display: block;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.5em;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: transform 0.2s;
 }
-footer{margin:30px 0;text-align:center;color:var(--muted)}
+
+.story-btn:hover {
+    transform: scale(1.1);
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #FFA07A;
+    color: white;
+}
+
+/* Page histoire */
+.histoire-container {
+    padding: 20px;
+}
+
+.histoire-container img {
+    max-width: 100%;
+    border-radius: 15px;
+}
+
+.like-btn {
+    background-color: #FF69B4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.forum-section {
+    margin-top: 30px;
+}
+
+.forum-post {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    background-color: #FFF0F5;
+}
