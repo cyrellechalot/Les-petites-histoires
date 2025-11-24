@@ -1,14 +1,67 @@
-Tu vas m'assister pour créer un site pour que les enfants puissent lire des histoires 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histoires pour Enfants</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-Intégre ça dans le site :
-Des boutons interactifs pour les emmener sur certaines pages 
-(Ex : j’appuie sur ça et ça m’emmène sur une telle histoire)
-Les histoires sont: 
-- le petit chaperon rouge 
-- la belle et la bête 
-- roule galette 
-- Elmer  
+<header>
+    <h1>📚 Histoires Pour Enfants</h1>
+</header>
 
-Je veux que ça ressemble à : un site accessible pour les enfants, quelque chose de coloré et avec des petits dessins simple si possible genre bonhomme bâtons
+<main>
 
-**Requis** : - tu es un assistant de code tu écris 3 codes livrés en texte brut directement dans le chat (index.html, styles.css, script.js) AUCUN Typescript, nextJS ou autres langages. - fais moi un résumé 300 mot max de ce que font chacun des fichiers  - pose moi des questions si nécessaire pour ajuster des éventuels points qui manquent de détails. - tu peux mettre des place holder pour les images mais explique moi comment les intégrer via url ou le dépôt github si c'est le cas.
+    <div class="story-buttons">
+        <button onclick="goToStory('chaperon')">
+            <img src="images/chaperon.png" alt="Petit dessin">
+            Le Petit Chaperon Rouge
+        </button>
+
+        <button onclick="goToStory('belle')">
+            <img src="images/belle.png" alt="Petit dessin">
+            La Belle et la Bête
+        </button>
+
+        <button onclick="goToStory('galette')">
+            <img src="images/galette.png" alt="Petit dessin">
+            Roule Galette
+        </button>
+
+        <button onclick="goToStory('elmer')">
+            <img src="images/elmer.png" alt="Petit dessin">
+            Elmer
+        </button>
+    </div>
+
+    <section id="story-container">
+        <h2 id="story-title"></h2>
+        <p id="story-text"></p>
+
+        <div id="like-section" class="hidden">
+            <button id="like-btn" onclick="addLike()">👍 J’aime</button>
+            <span id="like-count">0</span>
+        </div>
+
+        <h3 class="section-title">💬 Laisse un commentaire</h3>
+        <div id="comment-section" class="hidden">
+            <textarea id="comment-input" placeholder="Écris ton commentaire..."></textarea>
+            <button onclick="addComment()">Envoyer</button>
+            <div id="comments-list"></div>
+        </div>
+
+        <h3 class="section-title">✨ Invente une suite à l’histoire</h3>
+        <div id="suite-section" class="hidden">
+            <textarea id="suite-input" placeholder="Imagine la suite..."></textarea>
+            <button onclick="addSuite()">Publier</button>
+            <div id="suite-list"></div>
+        </div>
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
