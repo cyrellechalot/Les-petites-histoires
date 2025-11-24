@@ -1,14 +1,68 @@
-Tu vas m'assister pour créer un site pour que les enfants puissent lire des histoires 
+body {
+    font-family: Arial, sans-serif;
+    background: #ffefd5;
+    margin: 0;
+}
 
-Intégre ça dans le site :
-Des boutons interactifs pour les emmener sur certaines pages 
-(Ex : j’appuie sur ça et ça m’emmène sur une telle histoire)
-Les histoires sont: 
-- le petit chaperon rouge 
-- la belle et la bête 
-- roule galette 
-- Elmer  
+header {
+    background: #ffa07a;
+    padding: 20px;
+    text-align: center;
+}
 
-Je veux que ça ressemble à : un site accessible pour les enfants, quelque chose de coloré et avec des petits dessins simple si possible genre bonhomme bâtons
+.story-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
 
-**Requis** : - tu es un assistant de code tu écris 3 codes livrés en texte brut directement dans le chat (index.html, styles.css, script.js) AUCUN Typescript, nextJS ou autres langages. - fais moi un résumé 300 mot max de ce que font chacun des fichiers  - pose moi des questions si nécessaire pour ajuster des éventuels points qui manquent de détails. - tu peux mettre des place holder pour les images mais explique moi comment les intégrer via url ou le dépôt github si c'est le cas.
+button {
+    background: #fff8dc;
+    border: 3px solid #ffa07a;
+    padding: 15px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button img {
+    width: 60px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#story-container {
+    margin: 30px;
+    padding: 20px;
+    background: #ffffffcc;
+    border-radius: 12px;
+}
+
+.hidden {
+    display: none;
+}
+
+textarea {
+    width: 90%;
+    height: 80px;
+    border: 2px solid #ffa07a;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 1em;
+}
+
+.section-title {
+    margin-top: 40px;
+    background: #ffc8a2;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.bubble {
+    background: #fff;
+    border: 2px solid #ffa07a;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 12px;
+}
