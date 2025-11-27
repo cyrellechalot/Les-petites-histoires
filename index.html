@@ -1,144 +1,85 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Les Petites Histoires</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Histoires pour Enfants</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="hero">
-    <div class="hero__content">
-      <p class="tag">Bibliothèque des tout-petits</p>
-      <h1>Un livre magique qui tourne les pages tout seul</h1>
-      <p class="subtitle">Tapote sur la couverture pour découvrir chaque histoire et ouvrir la page complète.</p>
-      <div class="hero__cta">
-        <a href="#livre" class="pill">Ouvrir le livre</a>
-        <a href="#inventer" class="pill pill--ghost">Inventer une fin</a>
-      </div>
-    </div>
+  <header>
+    <div class="logo">📚</div>
+    <h1>Histoires pour Enfants</h1>
   </header>
 
-  <main>
-    <section id="livre" class="section section--book">
-      <div class="section__header">
-        <h2>Feuille le grand livre</h2>
-        <p>Une histoire par page : clique sur le bouton pour lire, liker ou voir les inventions des autres.</p>
-      </div>
-      <div class="book">
-        <button id="prev-page" class="turn" aria-label="Page précédente">⟵</button>
-        <article class="page" aria-live="polite">
-          <div class="page__top">
-            <span class="page__label">Page <span id="page-number">1</span> / <span id="page-total">10</span></span>
-            <div class="page__stats">
-              <button id="page-like" class="icon-button" aria-label="Liker cette page">
-                <span class="icon">❤</span>
-                <span id="page-like-count">0</span>
-              </button>
-              <div class="stat">
-                <span class="icon">👁</span>
-                <span id="page-views">0</span>
-              </div>
-            </div>
-          </div>
-          <img id="page-image" class="page__image" alt="Illustration de l'histoire" />
-          <h3 id="page-title" class="page__title"></h3>
-          <p id="page-summary" class="page__summary"></p>
-          <div class="page__actions">
-            <button id="read-story" class="pill">Lire cette histoire</button>
-            <button id="see-inventions" class="pill pill--ghost">Voir les inventions</button>
-          </div>
-        </article>
-        <button id="next-page" class="turn" aria-label="Page suivante">⟶</button>
+  <main id="app">
+    <!-- page d'accueil -->
+    <section id="home" class="view">
+      <p class="subtitle">Choisis une histoire en appuyant sur un bouton !</p>
+      <div class="grid">
+        <a class="card" href="#chaperon" data-story="chaperon">
+          <img src="/mnt/data/A_colorful,_child-friendly_web_page_design_titled_.png" alt="Chaperon">
+          <div class="card-title">Le Petit Chaperon Rouge</div>
+        </a>
+
+        <a class="card" href="#belle" data-story="belle">
+          <img src="/mnt/data/A_colorful,_child-friendly_web_page_design_titled_.png" alt="Belle">
+          <div class="card-title">La Belle et la Bête</div>
+        </a>
+
+        <a class="card" href="#galette" data-story="galette">
+          <img src="/mnt/data/A_colorful,_child-friendly_web_page_design_titled_.png" alt="Galette">
+          <div class="card-title">Roule Galette</div>
+        </a>
+
+        <a class="card" href="#elmer" data-story="elmer">
+          <img src="/mnt/data/A_colorful,_child-friendly_web_page_design_titled_.png" alt="Elmer">
+          <div class="card-title">Elmer</div>
+        </a>
       </div>
     </section>
 
-    <section id="inventer" class="section invent">
-      <div class="section__header">
-        <h2>Inventer la fin de l'histoire</h2>
-        <p>Laisse ta plume ajouter des rebondissements magiques et découvre les idées des autres.</p>
+    <!-- view qui servira pour chaque histoire (routing par hash) -->
+    <section id="story-view" class="view hidden">
+      <button class="back" onclick="location.href='#'">← Retour</button>
+      <h2 id="story-title"></h2>
+      <div id="story-image-wrap"><img id="story-image" src="" alt=""></div>
+      <article id="story-text" class="story-text"></article>
+
+      <div id="like-area" class="panel">
+        <button id="like-btn" class="like-btn">👍 J’aime</button>
+        <span id="like-count">0</span>
       </div>
-      <form id="ending-form" class="card form">
-        <div class="form__row">
-          <label for="story-select">Choisis ton histoire</label>
-          <select id="story-select" required></select>
+
+      <div class="panel">
+        <h3>💬 Commentaires</h3>
+        <textarea id="comment-input" placeholder="Écris ton commentaire..."></textarea>
+        <div class="row">
+          <button id="comment-send">Envoyer</button>
+          <small id="comment-help">Max 400 caractères — modération automatique ON</small>
         </div>
-        <div class="form__row">
-          <label for="author">Ton prénom</label>
-          <input id="author" type="text" placeholder="Ex : Mila" required />
+        <div id="comments-list" class="list"></div>
+      </div>
+
+      <div class="panel">
+        <h3>✨ Invente une suite</h3>
+        <textarea id="suite-input" placeholder="Imagine la suite..."></textarea>
+        <div class="row">
+          <button id="suite-send">Publier</button>
+          <small>Les suites sont visibles par tous (Firebase)</small>
         </div>
-        <div class="form__row">
-          <label for="ending">Ta fin rêvée</label>
-          <textarea id="ending" rows="4" placeholder="Et soudain..." required></textarea>
-        </div>
-        <button type="submit" class="pill">Partager ma fin</button>
-      </form>
-      <div id="endings-list" class="ideas"></div>
+        <div id="suites-list" class="list"></div>
+      </div>
     </section>
 
-    <section id="avis" class="section">
-      <div class="section__header">
-        <h2>Page avis</h2>
-        <p>Dis-nous ce que tu as pensé des histoires et découvre l'avis des autres lecteurs.</p>
-      </div>
-      <form id="review-form" class="card form">
-        <div class="form__row">
-          <label for="reviewer">Ton prénom</label>
-          <input id="reviewer" type="text" placeholder="Ex : Léo" required />
-        </div>
-        <div class="form__row">
-          <label for="rating">Note</label>
-          <select id="rating" required>
-            <option value="5">⭐⭐⭐⭐⭐</option>
-            <option value="4">⭐⭐⭐⭐</option>
-            <option value="3">⭐⭐⭐</option>
-            <option value="2">⭐⭐</option>
-            <option value="1">⭐</option>
-          </select>
-        </div>
-        <div class="form__row">
-          <label for="review">Ton avis</label>
-          <textarea id="review" rows="3" placeholder="J'ai adoré..." required></textarea>
-        </div>
-        <button type="submit" class="pill">Envoyer mon avis</button>
-      </form>
-      <div id="reviews" class="reviews"></div>
-    </section>
+    <footer>
+      <small>Site pour enfants — modération automatique activée.</small>
+    </footer>
   </main>
 
-  <footer class="footer">
-    <p>Créé avec amour et imagination pour les jeunes lecteurs.</p>
-  </footer>
-
-  <div id="detail-overlay" class="overlay hidden" role="dialog" aria-modal="true">
-    <div class="overlay__page">
-      <button id="close-overlay" class="overlay__close" aria-label="Fermer">✕</button>
-      <div class="overlay__layout">
-        <img id="detail-image" class="overlay__image" alt="Illustration de l'histoire sélectionnée" />
-        <div class="overlay__text">
-          <p class="tag tag--small">Nouvelle page ouverte</p>
-          <h2 id="detail-title"></h2>
-          <p id="detail-story"></p>
-          <div class="detail__actions">
-            <button id="detail-like" class="icon-button" aria-label="Liker cette histoire">
-              <span class="icon">❤</span>
-              <span id="detail-like-count">0</span>
-            </button>
-            <div class="stat">
-              <span class="icon">👁</span>
-              <span id="detail-views">0</span>
-            </div>
-            <button id="detail-toggle-inventions" class="pill pill--ghost">Voir les inventions</button>
-          </div>
-        </div>
-      </div>
-      <div id="detail-endings" class="overlay__endings hidden">
-        <h3>Fins inventées</h3>
-        <div id="detail-endings-list" class="ideas ideas--compact"></div>
-      </div>
-    </div>
-  </div>
-
+  <!-- Firebase (v9 modular) + notre script principal -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
