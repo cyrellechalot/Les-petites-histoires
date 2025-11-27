@@ -1,1 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Les Petites Histoires</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <p class="tag">Bibliothèque des tout-petits</p>
+      <h1>10 histoires douces pour rêver et imaginer</h1>
+      <p class="subtitle">Clique sur une aventure pour la découvrir, la liker et inventer la suite !</p>
+      <div class="hero__cta">
+        <a href="#histoires" class="pill">Voir les histoires</a>
+        <a href="#inventer" class="pill pill--ghost">Inventer une fin</a>
+      </div>
+    </div>
+  </header>
 
+  <main>
+    <section id="histoires" class="section">
+      <div class="section__header">
+        <h2>Histoires à explorer</h2>
+        <p>Choisis une histoire, regarde combien de curieux l'ont lue et ajoute ton petit cœur.</p>
+      </div>
+      <div id="stories-grid" class="stories"></div>
+    </section>
+
+    <section id="detail" class="section detail hidden">
+      <div class="section__header">
+        <h2 id="detail-title">Titre de l'histoire</h2>
+        <p id="detail-subtitle">Découvre l'histoire complète et laisse parler ton imagination.</p>
+      </div>
+      <div class="detail__content">
+        <img id="detail-image" class="detail__image" alt="Illustration de l'histoire sélectionnée" />
+        <div class="detail__text">
+          <p id="detail-story"></p>
+          <div class="detail__actions">
+            <button id="detail-like" class="icon-button" aria-label="Liker cette histoire">
+              <span class="icon">❤</span>
+              <span id="detail-like-count">0</span>
+            </button>
+            <div class="stat">
+              <span class="icon">👁</span>
+              <span id="detail-views">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="inventer" class="section invent">
+      <div class="section__header">
+        <h2>Inventer la fin de l'histoire</h2>
+        <p>Laisse ta plume ajouter des rebondissements magiques et découvre les idées des autres.</p>
+      </div>
+      <form id="ending-form" class="card form">
+        <div class="form__row">
+          <label for="story-select">Choisis ton histoire</label>
+          <select id="story-select" required></select>
+        </div>
+        <div class="form__row">
+          <label for="author">Ton prénom</label>
+          <input id="author" type="text" placeholder="Ex : Mila" required />
+        </div>
+        <div class="form__row">
+          <label for="ending">Ta fin rêvée</label>
+          <textarea id="ending" rows="4" placeholder="Et soudain..." required></textarea>
+        </div>
+        <button type="submit" class="pill">Partager ma fin</button>
+      </form>
+      <div id="endings-list" class="ideas"></div>
+    </section>
+
+    <section id="avis" class="section">
+      <div class="section__header">
+        <h2>Page avis</h2>
+        <p>Dis-nous ce que tu as pensé des histoires et découvre l'avis des autres lecteurs.</p>
+      </div>
+      <form id="review-form" class="card form">
+        <div class="form__row">
+          <label for="reviewer">Ton prénom</label>
+          <input id="reviewer" type="text" placeholder="Ex : Léo" required />
+        </div>
+        <div class="form__row">
+          <label for="rating">Note</label>
+          <select id="rating" required>
+            <option value="5">⭐⭐⭐⭐⭐</option>
+            <option value="4">⭐⭐⭐⭐</option>
+            <option value="3">⭐⭐⭐</option>
+            <option value="2">⭐⭐</option>
+            <option value="1">⭐</option>
+          </select>
+        </div>
+        <div class="form__row">
+          <label for="review">Ton avis</label>
+          <textarea id="review" rows="3" placeholder="J'ai adoré..." required></textarea>
+        </div>
+        <button type="submit" class="pill">Envoyer mon avis</button>
+      </form>
+      <div id="reviews" class="reviews"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Créé avec amour et imagination pour les jeunes lecteurs.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
