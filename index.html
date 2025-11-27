@@ -1,1 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Petites Histoires - Monde féerique</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">✨ Les Petites Histoires</div>
+    <nav class="nav">
+      <button class="nav__link" data-target="accueil">Accueil</button>
+      <button class="nav__link" data-target="fins">Inventer la fin</button>
+      <button class="nav__link" data-target="avis">Avis</button>
+    </nav>
+  </header>
 
+  <section class="hero" id="accueil">
+    <div class="hero__text">
+      <p class="badge">10 contes magiques</p>
+      <h1>Un livre géant rempli de couleurs</h1>
+      <p class="subtitle">Choisis ton histoire préférée, lis-la, like-la et invente une fin fabuleuse !</p>
+      <div class="hero__actions">
+        <button class="btn" data-target="fins">Inventer une fin</button>
+        <button class="btn btn--ghost" data-target="avis">Donner mon avis</button>
+      </div>
+    </div>
+    <div class="hero__book" aria-hidden="true">
+      <div class="page page--left"></div>
+      <div class="page page--right"></div>
+    </div>
+  </section>
+
+  <main>
+    <section class="section">
+      <div class="section__header">
+        <p class="badge badge--soft">Parcours enchanté</p>
+        <h2>Chaque conte a sa propre page</h2>
+        <p class="subtitle">Des cartes façon album illustré, avec vues et coeurs.</p>
+      </div>
+      <div id="storyList" class="storybook" aria-live="polite"></div>
+    </section>
+
+    <section class="section section--alt" id="fins">
+      <div class="section__header">
+        <p class="badge badge--soft">Deviens auteur</p>
+        <h2>Inventer la fin de l'histoire</h2>
+        <p class="subtitle">Choisis un conte, écris ta fin, like celles des autres aventuriers.</p>
+      </div>
+      <div class="grid-two">
+        <form id="endingForm" class="card card--form" novalidate>
+          <h3>Ta fin magique</h3>
+          <label for="endingStory">Sélectionne une histoire</label>
+          <select id="endingStory" required></select>
+          <label for="endingAuthor">Ton prénom</label>
+          <input id="endingAuthor" type="text" placeholder="Léna" required>
+          <label for="endingText">Raconte ta fin</label>
+          <textarea id="endingText" rows="4" placeholder="Et le loup devint ami..." required></textarea>
+          <button type="submit" class="btn">Partager ma fin</button>
+        </form>
+        <div class="card card--list">
+          <div class="card__header">
+            <h3>Fins partagées</h3>
+            <p class="muted">Lis, rêve et like les meilleures idées.</p>
+          </div>
+          <div id="endingList" class="ending-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="avis">
+      <div class="section__header">
+        <p class="badge badge--soft">Petites étoiles</p>
+        <h2>La page des avis</h2>
+        <p class="subtitle">Note nos contes de 1 à 5 étoiles et laisse un doux message.</p>
+      </div>
+      <div class="grid-two">
+        <form id="reviewForm" class="card card--form" novalidate>
+          <h3>Partager mon avis</h3>
+          <label for="reviewName">Ton prénom</label>
+          <input id="reviewName" type="text" placeholder="Sami" required>
+          <label for="reviewStars">Ta note</label>
+          <div class="stars" data-stars>
+            <input type="range" id="reviewStars" min="1" max="5" value="5">
+            <div class="stars__visual" aria-hidden="true"></div>
+          </div>
+          <label for="reviewMessage">Ton message</label>
+          <textarea id="reviewMessage" rows="3" placeholder="J'ai adoré la fin !"></textarea>
+          <button type="submit" class="btn">Envoyer</button>
+        </form>
+        <div class="card card--list">
+          <div class="card__header">
+            <h3>Les derniers avis</h3>
+            <p class="muted" id="reviewSummary">Aucun avis pour le moment.</p>
+          </div>
+          <div id="reviewList" class="review-list"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="storyModal" class="modal" role="dialog" aria-modal="true" hidden>
+    <div class="modal__content">
+      <button class="modal__close" aria-label="Fermer">×</button>
+      <div class="modal__header">
+        <div>
+          <p class="badge">Conte illustré</p>
+          <h3 id="modalTitle"></h3>
+          <p id="modalSummary" class="muted"></p>
+        </div>
+        <img id="modalImage" alt="Illustration" class="modal__image">
+      </div>
+      <div class="modal__metrics">
+        <button id="modalLike" class="chip chip--action" aria-label="J'aime">
+          <span>❤️</span><strong id="modalLikeCount">0</strong>
+        </button>
+        <div class="chip">
+          <span>👁️</span><strong id="modalViewCount">0</strong>
+        </div>
+      </div>
+      <div id="modalBody" class="modal__body"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Créé avec imagination et beaucoup de paillettes ✨</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
