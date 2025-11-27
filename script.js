@@ -2,72 +2,90 @@ const stories = [
   {
     id: 'chaperon',
     title: 'Le Petit Chaperon Rouge',
-    summary: "Un voyage en forêt où le courage d'une petite fille déjoue le loup.",
-    color: '#ff8fb8'
+    summary: 'Une fillette traverse la forêt pour apporter une galette à sa grand-mère, mais un loup rusé rôde.',
+    body: 'Le Petit Chaperon Rouge porte son panier à travers la forêt. En chemin, elle rencontre un loup qui la devance chez sa grand-mère. Grâce au courage d un chasseur, la fillette et sa grand-mère sont sauvées et le loup ne fait plus peur.',
+    image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=60'
   },
   {
     id: 'cochons',
     title: 'Les Trois Petits Cochons',
-    summary: 'Trois maisons, trois caractères et un loup qui souffle très fort.',
-    color: '#ffd166'
+    summary: 'Trois frères construisent des maisons différentes pour échapper au grand méchant loup.',
+    body: 'Le premier cochon bâtit en paille, le second en bois, le troisième en briques. Le loup souffle, souffle encore, mais seule la maison en briques résiste. Ensemble, les cochons comprennent que l entraide et la patience construisent le meilleur abri.',
+    image: 'https://images.unsplash.com/photo-1478071735433-5d8f19ad0fca?auto=format&fit=crop&w=600&q=60'
   },
   {
-    id: 'canard',
+    id: 'vilain',
     title: 'Le Vilain Petit Canard',
-    summary: 'Le parcours d’un petit caneton devenu beau cygne.',
-    color: '#7bdff2'
+    summary: 'Un jeune caneton se sent différent jusqu à ce qu il découvre sa véritable nature.',
+    body: 'Raillé par les autres animaux, le petit canard s éloigne et grandit seul. Lorsqu il se voit devenir un beau cygne, il comprend que la différence est une force et qu il a toujours eu une place dans ce monde éclatant.',
+    image: 'https://images.unsplash.com/photo-1528838062871-5c1f10519034?auto=format&fit=crop&w=600&q=60'
   },
   {
-    id: 'cendrillon',
-    title: 'Cendrillon',
-    summary: 'Une pantoufle de verre, un bal magique et une gentille marraine.',
-    color: '#c7b8ff'
-  },
-  {
-    id: 'blanche',
-    title: 'Blanche-Neige',
-    summary: 'Une pomme empoisonnée, sept amis et un amour sincère.',
-    color: '#9bf6ff'
-  },
-  {
-    id: 'hansel',
-    title: 'Hansel et Gretel',
-    summary: 'Deux enfants malins face à une maison en pain d’épices.',
-    color: '#ffc09f'
-  },
-  {
-    id: 'belle',
-    title: 'La Belle et la Bête',
-    summary: 'La beauté du cœur dévoilée derrière une apparence effrayante.',
-    color: '#ffcad4'
-  },
-  {
-    id: 'chatbotte',
+    id: 'merveilleux',
     title: 'Le Chat Botté',
-    summary: 'Un chat malin, des bottes et un marquis improvisé.',
-    color: '#f0b8ff'
+    summary: 'Un chat malin transforme la vie de son jeune maître grâce à ses bottes magiques.',
+    body: 'Avec un sac, des bottes et beaucoup d idées, le chat piège un ogre, impressionne le roi et offre à son maître un château. L intelligence, la gentillesse et un brin de chance ouvrent toutes les portes.',
+    image: 'https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&w=600&q=60'
   },
   {
-    id: 'raiponce',
-    title: 'Raiponce',
-    summary: 'Une tour cachée, de longs cheveux d’or et un chant qui éclaire.',
-    color: '#ffe066'
+    id: 'princesse',
+    title: 'La Princesse au Petit Pois',
+    summary: 'Une princesse prouve sa délicatesse grâce à un minuscule pois caché sous vingt matelas.',
+    body: 'Le prince cherche une vraie princesse. Une jeune fille arrive trempée par la pluie et dort sur un lit empilé. Elle ne peut fermer l oeil à cause d un petit pois oublié. Sa sensibilité révèle sa royauté et le prince l épouse.',
+    image: 'https://images.unsplash.com/photo-1529429617124-aee4c8c2c1a4?auto=format&fit=crop&w=600&q=60'
   },
   {
-    id: 'aladdin',
-    title: 'Aladdin',
-    summary: 'Une lampe merveilleuse, un génie joyeux et trois souhaits.',
-    color: '#a0e7e5'
+    id: 'boucle',
+    title: 'Boucle d Or et les Trois Ours',
+    summary: 'Une petite fille découvre la maison de trois ours et apprend la politesse.',
+    body: 'Boucle d Or goûte les bols, essaie les chaises et teste les lits. Les ours rentrent, surpris. Elle s excuse, comprend qu il faut demander avant d emprunter, et rentre chez elle plus sage que jamais.',
+    image: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=600&q=60'
+  },
+  {
+    id: 'feves',
+    title: 'Jack et le Haricot Magique',
+    summary: 'Un haricot géant mène Jack vers un château dans les nuages.',
+    body: 'En échange d une vache, Jack reçoit des fèves. Elles poussent jusqu au ciel ! Il y découvre un géant, récupère des trésors et apprend qu un cœur brave peut gravir toutes les montagnes.',
+    image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=60'
+  },
+  {
+    id: 'sirene',
+    title: 'La Petite Sirène',
+    summary: 'Une sirène curieuse rêve de marcher sur terre et de découvrir les humains.',
+    body: 'La petite sirène échange sa voix contre des jambes pour rencontrer le prince. Même sans parole, elle prouve sa bonté. Sa famille l attend toujours dans la mer scintillante, rappelant que les choix ont un prix mais aussi une beauté.',
+    image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=60'
+  },
+  {
+    id: 'aladin',
+    title: 'Aladin et la Lampe Merveilleuse',
+    summary: 'Une lampe magique révèle un génie capable d exaucer trois vœux.',
+    body: 'Aladin trouve une lampe et libère un génie. Il apprend à utiliser ses vœux avec sagesse, protège son royaume d un sorcier jaloux et découvre que la vraie richesse vient du cœur.',
+    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=60'
+  },
+  {
+    id: 'mowgli',
+    title: 'Le Livre de la Jungle',
+    summary: 'Un enfant élevé par des loups découvre sa place entre la jungle et le village.',
+    body: 'Mowgli, guidé par Bagheera et Baloo, affronte le tigre Shere Khan. Il apprend les lois de la jungle, l amitié et le courage. À la fin, il choisit son chemin en gardant deux familles : la jungle et les humains.',
+    image: 'https://images.unsplash.com/photo-1433838552652-f9a46b332c40?auto=format&fit=crop&w=600&q=60'
   }
 ];
+
+const defaults = {
+  storyStats: stories.reduce((acc, story) => {
+    acc[story.id] = { likes: 0, views: 0 };
+    return acc;
+  }, {}),
+  endings: {},
+  reviews: []
+};
 
 const storage = {
   get(key, fallback) {
     try {
-      const saved = JSON.parse(localStorage.getItem(key));
-      return saved ?? structuredClone(fallback);
+      return JSON.parse(localStorage.getItem(key)) ?? fallback;
     } catch (e) {
-      return structuredClone(fallback);
+      return fallback;
     }
   },
   set(key, value) {
@@ -75,298 +93,238 @@ const storage = {
   }
 };
 
-const defaultMetrics = stories.reduce((acc, story) => {
-  acc[story.id] = { views: 12 + Math.floor(Math.random() * 20), likes: 3 + Math.floor(Math.random() * 8) };
-  return acc;
-}, {});
-
-let metrics = storage.get('storyMetrics', defaultMetrics);
+let storyStats = storage.get('storyStats', defaults.storyStats);
+let endings = storage.get('endings', defaults.endings);
+let reviews = storage.get('reviews', defaults.reviews);
 let likedStories = storage.get('likedStories', []);
-let endings = storage.get('storyEndings', {});
 let likedEndings = storage.get('likedEndings', []);
-let reviews = storage.get('reviews', []);
 
-let currentStoryId = null;
+const storyList = document.getElementById('storyList');
+const endingList = document.getElementById('endingList');
+const endingForm = document.getElementById('endingForm');
+const endingStorySelect = document.getElementById('endingStory');
+const endingAuthor = document.getElementById('endingAuthor');
+const endingText = document.getElementById('endingText');
+const reviewForm = document.getElementById('reviewForm');
+const reviewName = document.getElementById('reviewName');
+const reviewStars = document.getElementById('reviewStars');
+const reviewMessage = document.getElementById('reviewMessage');
+const reviewList = document.getElementById('reviewList');
+const reviewSummary = document.getElementById('reviewSummary');
+const storyModal = document.getElementById('storyModal');
+const modalTitle = document.getElementById('modalTitle');
+const modalSummary = document.getElementById('modalSummary');
+const modalImage = document.getElementById('modalImage');
+const modalBody = document.getElementById('modalBody');
+const modalLikeCount = document.getElementById('modalLikeCount');
+const modalViewCount = document.getElementById('modalViewCount');
+const modalLikeBtn = document.getElementById('modalLike');
+const modalClose = document.querySelector('.modal__close');
 
-function saveState() {
-  storage.set('storyMetrics', metrics);
-  storage.set('likedStories', likedStories);
-  storage.set('storyEndings', endings);
-  storage.set('likedEndings', likedEndings);
+function saveAll() {
+  storage.set('storyStats', storyStats);
+  storage.set('endings', endings);
   storage.set('reviews', reviews);
+  storage.set('likedStories', likedStories);
+  storage.set('likedEndings', likedEndings);
 }
 
-function createChildDrawing(title, color) {
-  const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 220'>
-    <defs>
-      <linearGradient id='g' x1='0' x2='1' y1='0' y2='1'>
-        <stop stop-color='${color}' offset='0%'/>
-        <stop stop-color='#ffffff' offset='100%'/>
-      </linearGradient>
-    </defs>
-    <rect width='320' height='220' rx='32' fill='url(#g)'/>
-    <circle cx='70' cy='60' r='28' fill='#fff9c4' stroke='#ff9f1c' stroke-width='6'/>
-    <path d='M40 180 Q110 120 190 170 T310 170' fill='none' stroke='#7c5ac2' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/>
-    <path d='M120 85 q30 -40 70 0 q-20 10 -35 25 q-20 -15 -35 -25Z' fill='#ff5d8f' stroke='#ff2d55' stroke-width='6' stroke-linejoin='round'/>
-    <text x='160' y='200' text-anchor='middle' font-size='26' font-family='Fredoka, Nunito, sans-serif' fill='#2d1f3b'>${title}</text>
-  </svg>`;
-  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+function renderStars(value) {
+  const full = '★'.repeat(value);
+  const empty = '☆'.repeat(5 - value);
+  return `${full}${empty}`;
 }
+
+function scrollToSection(id) {
+  const section = document.getElementById(id);
+  if (section) section.scrollIntoView({ behavior: 'smooth' });
+}
+
+document.querySelectorAll('[data-target]').forEach(btn => {
+  btn.addEventListener('click', () => scrollToSection(btn.dataset.target));
+});
 
 function renderStories() {
-  const grid = document.getElementById('storyGrid');
-  grid.innerHTML = '';
-
-  stories.forEach((story) => {
+  storyList.innerHTML = '';
+  stories.forEach(story => {
+    const stats = storyStats[story.id] || { likes: 0, views: 0 };
     const card = document.createElement('article');
     card.className = 'card';
-    const img = document.createElement('img');
-    img.src = createChildDrawing(story.title.split(' ')[0], story.color);
-    img.alt = `Dessin pour ${story.title}`;
-
-    const title = document.createElement('h3');
-    title.textContent = story.title;
-
-    const summary = document.createElement('p');
-    summary.textContent = story.summary;
-
-    const metricsRow = document.createElement('div');
-    metricsRow.className = 'card__metrics';
-    metricsRow.innerHTML = `
-      <div class="metric"><span>👁️</span><strong data-view="${story.id}">${metrics[story.id]?.views ?? 0}</strong></div>
-      <button class="metric metric--action" data-like="${story.id}" aria-label="J'aime ${story.title}"><span>❤️</span><strong data-like-count="${story.id}">${metrics[story.id]?.likes ?? 0}</strong></button>
+    card.innerHTML = `
+      <img class="card__image" src="${story.image}" alt="${story.title}">
+      <h3>${story.title}</h3>
+      <p>${story.summary}</p>
+      <div class="card__metrics">
+        <div class="chip"><span>👁️</span><strong>${stats.views}</strong></div>
+        <button class="chip chip--action" data-like="${story.id}"><span>❤️</span><strong>${stats.likes}</strong></button>
+      </div>
+      <div class="card__actions">
+        <button class="btn" data-read="${story.id}">Lire l'histoire</button>
+      </div>
     `;
-
-    const actions = document.createElement('div');
-    actions.className = 'card__actions';
-    actions.innerHTML = `
-      <button class="pill" data-read="${story.id}">Lire l'histoire</button>
-      <button class="pill pill--ghost" data-ending="${story.id}">Inventer la fin</button>
-    `;
-
-    card.append(img, title, summary, metricsRow, actions);
-    grid.appendChild(card);
+    storyList.appendChild(card);
   });
 }
 
-function updateMetricDisplays(storyId) {
-  const viewEls = document.querySelectorAll(`[data-view="${storyId}"]`);
-  viewEls.forEach((el) => (el.textContent = metrics[storyId].views));
-
-  const likeEls = document.querySelectorAll(`[data-like-count="${storyId}"]`);
-  likeEls.forEach((el) => (el.textContent = metrics[storyId].likes));
-}
-
-function toggleStoryLike(storyId) {
-  const hasLiked = likedStories.includes(storyId);
-  if (hasLiked) {
-    metrics[storyId].likes = Math.max(0, metrics[storyId].likes - 1);
-    likedStories = likedStories.filter((id) => id !== storyId);
-  } else {
-    metrics[storyId].likes += 1;
-    likedStories.push(storyId);
-  }
-  saveState();
-  updateMetricDisplays(storyId);
-  if (currentStoryId === storyId) {
-    document.getElementById('modalLikeCount').textContent = metrics[storyId].likes;
-    document.getElementById('modalLike').classList.toggle('is-liked', !hasLiked);
-  }
-}
-
-function openModal(storyId) {
-  currentStoryId = storyId;
-  const story = stories.find((s) => s.id === storyId);
+function openStory(id) {
+  const story = stories.find(s => s.id === id);
   if (!story) return;
-
-  metrics[storyId].views += 1;
-  saveState();
-  updateMetricDisplays(storyId);
-
-  document.getElementById('modalTitle').textContent = story.title;
-  document.getElementById('modalSummary').textContent = story.summary;
-  document.getElementById('modalImage').src = createChildDrawing(story.title, story.color);
-  document.getElementById('modalViewCount').textContent = metrics[storyId].views;
-  document.getElementById('modalLikeCount').textContent = metrics[storyId].likes;
-  document.getElementById('modalLike').classList.toggle('is-liked', likedStories.includes(storyId));
-
-  document.getElementById('endingPanel').hidden = true;
-
-  document.getElementById('storyModal').hidden = false;
+  storyStats[id] = storyStats[id] || { likes: 0, views: 0 };
+  storyStats[id].views += 1;
+  modalTitle.textContent = story.title;
+  modalSummary.textContent = story.summary;
+  modalImage.src = story.image;
+  modalBody.textContent = story.body;
+  modalLikeCount.textContent = storyStats[id].likes;
+  modalViewCount.textContent = storyStats[id].views;
+  modalLikeBtn.dataset.story = id;
+  storyModal.hidden = false;
+  saveAll();
+  renderStories();
 }
 
-function closeModal() {
-  document.getElementById('storyModal').hidden = true;
-  currentStoryId = null;
+function toggleStoryLike(id) {
+  const hasLiked = likedStories.includes(id);
+  storyStats[id] = storyStats[id] || { likes: 0, views: 0 };
+  if (hasLiked) {
+    storyStats[id].likes = Math.max(0, storyStats[id].likes - 1);
+    likedStories = likedStories.filter(s => s !== id);
+  } else {
+    storyStats[id].likes += 1;
+    likedStories.push(id);
+  }
+  modalLikeCount.textContent = storyStats[id].likes;
+  saveAll();
+  renderStories();
 }
 
-function renderEndingsList() {
-  if (!currentStoryId) return;
-  const list = document.getElementById('endingList');
-  list.innerHTML = '';
-  const entries = endings[currentStoryId] || [];
-
-  if (entries.length === 0) {
-    list.innerHTML = '<p>Aucune fin imaginée pour le moment. Lance-toi !</p>';
+function renderEndings() {
+  endingList.innerHTML = '';
+  const selectedId = endingStorySelect.value || stories[0].id;
+  const items = (endings[selectedId] || []).slice().sort((a, b) => b.likes - a.likes);
+  if (!items.length) {
+    const empty = document.createElement('p');
+    empty.className = 'muted';
+    empty.textContent = 'Aucune fin pour le moment, lance-toi !';
+    endingList.appendChild(empty);
     return;
   }
 
-  entries
-    .slice()
-    .sort((a, b) => b.likes - a.likes || b.created - a.created)
-    .forEach((ending) => {
-      const article = document.createElement('article');
-      article.className = 'ending';
-      const header = document.createElement('div');
-      header.className = 'ending__header';
-      const author = document.createElement('strong');
-      author.textContent = ending.author || 'Anonyme';
-      const likeBtn = document.createElement('button');
-      likeBtn.className = 'ending__like';
-      likeBtn.innerHTML = `❤️ <span>${ending.likes}</span>`;
-      likeBtn.addEventListener('click', () => toggleEndingLike(ending.id));
-      header.append(author, likeBtn);
-
-      const text = document.createElement('p');
-      text.textContent = ending.text;
-
-      article.append(header, text);
-      list.appendChild(article);
-    });
+  items.forEach(item => {
+    const card = document.createElement('article');
+    card.className = 'ending-card';
+    const liked = likedEndings.includes(item.id);
+    card.innerHTML = `
+      <header>
+        <strong>${item.author}</strong>
+        <button class="like-ending" data-ending="${item.id}">${liked ? '💖' : '🤍'} ${item.likes}</button>
+      </header>
+      <p class="muted">Pour ${stories.find(s => s.id === item.storyId)?.title || 'une histoire'}</p>
+      <p>${item.text}</p>
+    `;
+    endingList.appendChild(card);
+  });
 }
 
-function addEnding(author, text) {
-  if (!currentStoryId) return;
-  const entry = {
-    id: `${currentStoryId}-${Date.now()}`,
-    author: author.trim() || 'Anonyme',
-    text: text.trim(),
-    likes: 0,
-    created: Date.now()
-  };
-  endings[currentStoryId] = endings[currentStoryId] || [];
-  endings[currentStoryId].push(entry);
-  saveState();
-  renderEndingsList();
+function renderEndingSelect() {
+  endingStorySelect.innerHTML = stories.map(story => `<option value="${story.id}">${story.title}</option>`).join('');
+}
+
+function addEnding(event) {
+  event.preventDefault();
+  const storyId = endingStorySelect.value;
+  const author = endingAuthor.value.trim();
+  const text = endingText.value.trim();
+  if (!storyId || !author || !text) return;
+
+  const entry = { id: crypto.randomUUID(), storyId, author, text, likes: 0 };
+  endings[storyId] = endings[storyId] || [];
+  endings[storyId].push(entry);
+  endingText.value = '';
+  saveAll();
+  renderEndings();
 }
 
 function toggleEndingLike(endingId) {
-  let targetStory = null;
-  for (const [storyId, list] of Object.entries(endings)) {
-    const found = list.find((e) => e.id === endingId);
-    if (found) {
-      targetStory = storyId;
-      const hasLiked = likedEndings.includes(endingId);
-      if (hasLiked) {
-        found.likes = Math.max(0, found.likes - 1);
-        likedEndings = likedEndings.filter((id) => id !== endingId);
-      } else {
-        found.likes += 1;
-        likedEndings.push(endingId);
-      }
-      break;
-    }
+  const all = Object.values(endings).flat();
+  const target = all.find(e => e.id === endingId);
+  if (!target) return;
+  const liked = likedEndings.includes(endingId);
+  if (liked) {
+    target.likes = Math.max(0, target.likes - 1);
+    likedEndings = likedEndings.filter(id => id !== endingId);
+  } else {
+    target.likes += 1;
+    likedEndings.push(endingId);
   }
-  if (targetStory) {
-    saveState();
-    renderEndingsList();
-  }
+  saveAll();
+  renderEndings();
 }
 
 function renderReviews() {
-  const container = document.getElementById('reviewList');
-  container.innerHTML = '';
-  if (reviews.length === 0) {
-    container.innerHTML = '<p>Pas encore d\'avis. Laisse le premier message !</p>';
+  reviewList.innerHTML = '';
+  if (!reviews.length) {
+    reviewSummary.textContent = 'Aucun avis pour le moment.';
     return;
   }
 
-  reviews
-    .slice()
-    .sort((a, b) => b.created - a.created)
-    .forEach((review) => {
-      const card = document.createElement('article');
-      card.className = 'review';
-      const title = document.createElement('p');
-      title.className = 'review__title';
-      title.textContent = review.name;
-      const rating = document.createElement('p');
-      rating.className = 'review__rating';
-      rating.textContent = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
-      const message = document.createElement('p');
-      message.textContent = review.message;
-      card.append(title, rating, message);
-      container.appendChild(card);
-    });
+  const avg = (reviews.reduce((sum, r) => sum + r.stars, 0) / reviews.length).toFixed(1);
+  reviewSummary.textContent = `${reviews.length} avis, moyenne ${avg}★`;
+
+  reviews.slice(-6).reverse().forEach(r => {
+    const card = document.createElement('article');
+    card.className = 'review-card';
+    card.innerHTML = `
+      <header>
+        <strong>${r.name}</strong>
+        <span>${renderStars(r.stars)}</span>
+      </header>
+      <p class="muted">${r.message || 'Un avis tout en étoiles !'}</p>
+    `;
+    reviewList.appendChild(card);
+  });
 }
 
-function addReview(name, rating, message) {
-  reviews.push({ name: name.trim(), rating, message: message.trim(), created: Date.now() });
-  saveState();
+function addReview(event) {
+  event.preventDefault();
+  const name = reviewName.value.trim();
+  const stars = Number(reviewStars.value);
+  const message = reviewMessage.value.trim();
+  if (!name || !stars) return;
+  reviews.push({ id: crypto.randomUUID(), name, stars, message });
+  reviewName.value = '';
+  reviewMessage.value = '';
+  reviewStars.value = 5;
+  updateStarVisual(reviewStars);
+  saveAll();
   renderReviews();
 }
 
-function bindEvents() {
-  document.getElementById('storyGrid').addEventListener('click', (event) => {
-    const read = event.target.closest('[data-read]');
-    const like = event.target.closest('[data-like]');
-    const endingBtn = event.target.closest('[data-ending]');
-
-    if (read) {
-      openModal(read.dataset.read);
-    }
-    if (like) {
-      toggleStoryLike(like.dataset.like);
-    }
-    if (endingBtn) {
-      openModal(endingBtn.dataset.ending);
-      document.getElementById('endingPanel').hidden = false;
-      renderEndingsList();
-    }
-  });
-
-  document.getElementById('modalLike').addEventListener('click', () => {
-    if (currentStoryId) toggleStoryLike(currentStoryId);
-  });
-
-  document.querySelector('.modal__close').addEventListener('click', closeModal);
-  document.getElementById('storyModal').addEventListener('click', (event) => {
-    if (event.target.id === 'storyModal') closeModal();
-  });
-
-  document.getElementById('openEndings').addEventListener('click', () => {
-    const panel = document.getElementById('endingPanel');
-    panel.hidden = !panel.hidden;
-    if (!panel.hidden) renderEndingsList();
-  });
-
-  document.getElementById('endingForm').addEventListener('submit', (event) => {
-    event.preventDefault();
-    const author = document.getElementById('endingAuthor');
-    const text = document.getElementById('endingText');
-    if (!text.value.trim()) return;
-    addEnding(author.value || 'Anonyme', text.value);
-    author.value = '';
-    text.value = '';
-  });
-
-  document.getElementById('reviewForm').addEventListener('submit', (event) => {
-    event.preventDefault();
-    const name = document.getElementById('reviewName');
-    const rating = document.getElementById('reviewRating');
-    const message = document.getElementById('reviewMessage');
-    if (!name.value.trim()) return;
-    addReview(name.value || 'Anonyme', Math.max(1, Math.min(5, Number(rating.value))), message.value);
-    name.value = '';
-    rating.value = 5;
-    message.value = '';
-  });
+function updateStarVisual(range) {
+  const visual = range.parentElement.querySelector('.stars__visual');
+  visual.textContent = renderStars(Number(range.value));
 }
 
-function init() {
-  renderStories();
-  renderReviews();
-  bindEvents();
-}
+document.addEventListener('click', event => {
+  const likeBtn = event.target.closest('[data-like]');
+  const readBtn = event.target.closest('[data-read]');
+  const endingLike = event.target.closest('[data-ending]');
+  if (likeBtn) toggleStoryLike(likeBtn.dataset.like);
+  if (readBtn) openStory(readBtn.dataset.read);
+  if (endingLike) toggleEndingLike(endingLike.dataset.ending);
+});
 
-document.addEventListener('DOMContentLoaded', init);
+modalClose.addEventListener('click', () => (storyModal.hidden = true));
+storyModal.addEventListener('click', e => { if (e.target === storyModal) storyModal.hidden = true; });
+modalLikeBtn.addEventListener('click', () => toggleStoryLike(modalLikeBtn.dataset.story));
+
+endingForm.addEventListener('submit', addEnding);
+endingStorySelect.addEventListener('change', renderEndings);
+reviewForm.addEventListener('submit', addReview);
+reviewStars.addEventListener('input', () => updateStarVisual(reviewStars));
+
+renderEndingSelect();
+renderStories();
+renderEndings();
+renderReviews();
+updateStarVisual(reviewStars);
