@@ -1,1 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Petites Histoires - Contes pour enfants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <p class="hero__badge">10 contes chaleureux</p>
+      <h1>Les petites histoires</h1>
+      <p class="hero__subtitle">Clique sur un titre pour ouvrir l'histoire, la liker et inventer ta propre fin !</p>
+      <div class="hero__actions">
+        <a class="pill" href="#histoires">Découvrir les histoires</a>
+        <a class="pill pill--ghost" href="#avis">Partager un avis</a>
+      </div>
+    </div>
+    <div class="hero__illustration" aria-hidden="true"></div>
+  </header>
 
+  <main>
+    <section id="histoires" class="panel">
+      <div class="panel__header">
+        <h2>Le grand livre des contes</h2>
+        <p>Parcourir, liker et redécouvrir les classiques</p>
+      </div>
+      <div id="storyGrid" class="story-grid" aria-live="polite"></div>
+    </section>
+
+    <section id="avis" class="panel panel--soft">
+      <div class="panel__header">
+        <h2>La page des avis</h2>
+        <p>Dis-nous quelle histoire tu as préférée et pourquoi</p>
+      </div>
+      <form id="reviewForm" class="card card--form" novalidate>
+        <div class="form-row">
+          <label for="reviewName">Ton prénom</label>
+          <input id="reviewName" name="name" type="text" placeholder="Capucine" required>
+        </div>
+        <div class="form-row">
+          <label for="reviewRating">Ta note (1 à 5)</label>
+          <input id="reviewRating" name="rating" type="number" min="1" max="5" value="5" required>
+        </div>
+        <div class="form-row">
+          <label for="reviewMessage">Ton message</label>
+          <textarea id="reviewMessage" name="message" rows="3" placeholder="J'ai adoré le loup qui..."></textarea>
+        </div>
+        <button type="submit" class="pill">Envoyer mon avis</button>
+      </form>
+      <div id="reviewList" class="review-list"></div>
+    </section>
+  </main>
+
+  <div id="storyModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal__content">
+      <button class="modal__close" aria-label="Fermer">×</button>
+      <div class="modal__body">
+        <div class="modal__header">
+          <div class="modal__title-group">
+            <p class="modal__badge">Conte classique</p>
+            <h3 id="modalTitle"></h3>
+            <p id="modalSummary" class="modal__summary"></p>
+          </div>
+          <img id="modalImage" class="modal__image" alt="Illustration de l'histoire">
+        </div>
+        <div class="modal__metrics">
+          <button id="modalLike" class="metric metric--action" aria-label="J'aime cette histoire">
+            <span>❤️</span>
+            <strong id="modalLikeCount">0</strong>
+            <small>J'aime</small>
+          </button>
+          <div class="metric">
+            <span>👁️</span>
+            <strong id="modalViewCount">0</strong>
+            <small>Vues</small>
+          </div>
+          <button id="openEndings" class="pill pill--ghost" type="button">Inventer / lire les fins</button>
+        </div>
+        <div id="endingPanel" class="ending-panel" hidden>
+          <h4>Inventer la fin</h4>
+          <form id="endingForm" class="card card--form" novalidate>
+            <div class="form-row">
+              <label for="endingAuthor">Ton prénom</label>
+              <input id="endingAuthor" name="author" type="text" placeholder="Alyssa" required>
+            </div>
+            <div class="form-row">
+              <label for="endingText">Ta fin imaginée</label>
+              <textarea id="endingText" name="text" rows="3" placeholder="Et soudain, le loup se mit à danser..."></textarea>
+            </div>
+            <button type="submit" class="pill">Publier la fin</button>
+          </form>
+          <div id="endingList" class="ending-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
